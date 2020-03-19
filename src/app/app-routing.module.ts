@@ -1,14 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabComponent } from './tab/tab.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    { path: 'tab', component: TabComponent, data: {title: 'test'} },
-  { path: 'page', loadChildren: () => import('./page/page.module').then(m => m.PageModule) },
+  {
+    path: '', component: HomeComponent, children: [
+      { path: 'tab', component: TabComponent, data: { title: 'test' } },
+      { path: 'page', loadChildren: './page/page.module#PageModule' },
+    ]
+  },
+  { path: 'navigation', loadChildren: './navigation/navigation.module#NavigationModule' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',
+    onSameUrlNavigation: 'reload',
+    enableTracing: true
+  })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

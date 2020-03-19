@@ -1,0 +1,190 @@
+<header class="sticky-top">
+  <mat-toolbar color="primary" class="text-uppercase">Angular 6 Bootstrap 4 Example</mat-toolbar>
+</header>
+
+<div class="container">
+  <form class="d-flex flex-column" [formGroup]="specialForm" ngxsForm="app.specialForm" ngxsFormClearOnDestroy="true"
+        (ngSubmit)="onSubmit()">
+    <div class="row">
+      <label for="name">Nom</label>
+      <input type="text" id="name" name="name" formControlName="name">
+    </div>
+    <div class="row">
+      <label for="firstName">Prénom</label>
+      <input type="text" name="firstName" id="firstName" formControlName="firstName">
+    </div>
+    <div class="row">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="password" formControlName="password">
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <div class="row">
+    <input type="radio" #myRadio name="m1" id="m1">
+    <label for="m1">bouton radio</label>
+  </div>
+</div>
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <ng-container *ngFor="let inp of nbInput">
+    <div class="d-flex flex-column col-2" [ngClass]="{'bg-danger': myInput.checked}">
+      <label class="btn btn-secondary">
+        <input [formControl]="period" #myInput type="radio" name="options" id="option1" autocomplete="off" [value]="inp"
+               [checked]="inp === 2"> button {{inp}}
+      </label>
+      <button (click)="showElement()">Click to show button {{inp}} ref</button>
+    </div>
+  </ng-container>
+</div>
+
+<section class="container">
+  <div class="row justify-content-between">
+    <mat-card class="col-2 col-md-6">1</mat-card> <!-- we use mat-card instead of div -->
+    <mat-card class="col-2 col-md-6">2</mat-card>
+  </div>
+  <div class="row">
+    <mat-card class="col-2">1</mat-card> <!-- we use mat-card instead of div -->
+    <mat-card class="col-2">2</mat-card>
+  </div>
+  <div class="row">
+    <mat-card class="col">1</mat-card> <!-- we use mat-card instead of div -->
+    <mat-card class="col">2</mat-card>
+    <mat-card class="col">3</mat-card>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row d-flex flex-xs-column">
+    <div class="col-2 order-1">
+      One of three columns 11
+    </div>
+    <!-- <div class="col align-self-center">
+      One of three columns
+    </div> -->
+    <div class="col-2 order-0">
+      One of three columns 22
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col order-last">
+      First, but last
+    </div>
+    <div class="col">
+      Second, but unordered
+    </div>
+    <div class="col order-first">
+      Third, but first
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4 offset-md-4 border shadow ">.col-md-4 .offset-md-4</div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+    <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+    <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+  </div>
+  <div class="row">
+    <div class="col-auto mr-auto">.col-auto .mr-auto</div>
+    <div class="col-auto">.col-auto</div>
+  </div>
+</div>
+
+<button (click)="display = !display">toggle</button>
+
+<ng-container *ngIf="display else temp">
+  <span>Hello</span>
+</ng-container>
+<ng-template #temp>
+  <span>It's me</span>
+</ng-template>
+
+<div class="container">
+  <div class="row">
+    <button (click)="openPdf()">Ouvrir le pdf</button>
+  </div>
+  <div class="row">
+    <button (click)="getPosts()">Posts</button>
+  </div>
+  <div class="row">
+    <button (click)="getPosts('zoulou')">PostsError</button>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <button (click)="navigate('tab')">go to tab</button>
+    <button (click)="navigate('page')">go to page</button>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<span>{{ 'hello There' | function:compile }}</span>
+
+<div>
+  <button (click)="launchTest()">Lancer un test</button>
+  <app-child-test [inputObs]="test$"></app-child-test>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12" *ngFor="let item of complexObject | keyvalue">
+      {{item.key}} : {{item.value}}
+    </div>
+  </div>
+</div>
+
+<footer></footer>
+
+

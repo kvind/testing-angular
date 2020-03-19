@@ -9,5 +9,8 @@
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/utilities";
-@import "styles/reset.scss"
+@import "styles/reset.scss";
 
+
+html, body{ height: 100%; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
