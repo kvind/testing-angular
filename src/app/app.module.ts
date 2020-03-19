@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { TabComponent } from './tab/tab.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatToolbarModule, MatCardModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -22,6 +21,10 @@ import { LOGGER_TOKEN, SpecificLogger } from './services/placeholder.abstract';
 import { Json2Service } from './services/json2.service';
 import { GenericDialogComponent } from './generic-dialog/generic-dialog.component';
 import { HomeComponent } from './home/home.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
